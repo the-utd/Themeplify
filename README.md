@@ -5,7 +5,7 @@
 
 * Install all dependencies with [yarn](https://yarnpkg.com/)
 ```bash
-yarn add --dev @the_united_team_of_developers/shopify-builder
+yarn add --dev @the-utd/themeplify
 ```
 
 * Add and configure your config.yml file. You can copy the example from the file [config.example.yml](./config.example.yml)
