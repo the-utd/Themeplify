@@ -12,7 +12,11 @@ const {
 	serveStatic
 } = buildify.packages;
 
-const { rewriteRule, entries }	= buildify.helpers;
+const {
+	rewriteRule,
+	entries,
+	errorLogger
+}	= buildify.helpers;
 const webpackConfig 			= buildify.options.webpack;
 const argv 						= buildify.args;
 
@@ -195,7 +199,15 @@ const server = async () => {
 	};
 
 	reloadServer.displayName = "reload:server";
-	gulp.watch(["./src/scripts/*.js"], reloadServer);
+	gulp.watch("./src/scripts/*.js").on("all", function (event, file) {
+		if(!["add", "unlink"].includes(event)) {
+			return;
+		}
+
+		gulp.series([
+			reloadServer
+		])(errorLogger);
+	});
 }
 
 server.displayName = "server";
