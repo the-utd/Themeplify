@@ -1,4 +1,4 @@
-# Shopify Builder
+# Shopify builder - Themeplify
 
 ## Usage
 **Node.js version 14.0.0 or higher**
