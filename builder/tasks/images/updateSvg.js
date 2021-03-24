@@ -7,7 +7,7 @@ const svgUpdate = () => {
         }))
         .pipe(rename({
             extname: ".svg",
-            dirname: "./src/icons"
+            dirname: ""
         }))
         .pipe(gulp.dest("./src/icons"));
 }
