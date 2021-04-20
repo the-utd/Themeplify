@@ -11,6 +11,18 @@ const svgWatch = async () => {
 		buildSvg.displayName = "build:svg";
 
 		return buildSvg;
+	}, (deleteFiles) => {
+		function deleteSvg() {
+			return gulp.src(deleteFiles)
+				.pipe(clean({
+					force: true,
+					allowEmpty: true
+				}));
+		}
+
+		deleteSvg.displayName = "delete:svg";
+
+		return deleteSvg;
 	});
 };
 
