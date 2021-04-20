@@ -28,6 +28,8 @@ buildify.packages = {
     cached: buildify.require("gulp-cached"),
     clean: buildify.require("gulp-clean"),
     copy: buildify.require("gulp-copy"),
+    download: buildify.require("gulp-download2"),
+	decompress: buildify.require("gulp-decompress"),
     filter: buildify.require("gulp-filter"),
     gulpif: buildify.require("gulp-if"),
     minify: buildify.require("gulp-minify"),
@@ -259,6 +261,12 @@ module.exports = function (callback) {
             },
             composedCallback
         )
+		.command(
+			"create",
+			"create new project",
+			(yargs) => {},
+			composedCallback
+		)
         .help()
         .wrap(null)
         .demandCommand(1)
