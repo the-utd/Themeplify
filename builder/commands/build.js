@@ -14,8 +14,10 @@ const { gulp } = global.buildify.packages;
 const build = gulp.series([
     clearThemekitWorkingDirectory,
     gulp.parallel(
-        buildScss,
-        buildScssMinify,
+        gulp.series(
+			buildScss,
+			buildScssMinify,
+		),
         gulp.series(
             buildJs,
             minifyJs
