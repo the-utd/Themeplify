@@ -4,7 +4,6 @@ const path 			= require("path");
 
 const {
     yaml,
-    gulplog,
     ansi,
     exit
 } = buildify.packages;

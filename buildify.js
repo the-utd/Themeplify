@@ -1,3 +1,5 @@
+const packageJSON = require("./package.json");
+
 function buildifyRequire(packageName) {
     // some additional logic for require
 
@@ -262,14 +264,20 @@ module.exports = function (callback) {
             composedCallback
         )
 		.command(
-			"create",
+			"create [archive]",
 			"create new project",
-			(yargs) => {},
+			(yargs) => {
+				return yargs
+					.option("archive", {
+						describe: "Url or path to zip archive",
+						default: "https://github.com/the-utd/Themeplify-Theme/archive/refs/heads/main.zip"
+					});
+			},
 			composedCallback
 		)
         .help()
         .wrap(null)
         .demandCommand(1)
-        .version('v1.0.6')
+        .version(`v${packageJSON.version}`)
         .argv;
 };

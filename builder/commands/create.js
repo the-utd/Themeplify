@@ -6,9 +6,11 @@ const {
 	clean
 }  = buildify.packages;
 
+const argv = buildify.args;
+
 const create = gulp.series(
 	function downloadTemplate(){
-		return download("https://github.com/the-utd/Themeplify-Theme/archive/refs/heads/main.zip")
+		return download(argv.archive)
 			.pipe(rename("theme.zip"))
 			.pipe(gulp.dest("./downloads"));
 	},
