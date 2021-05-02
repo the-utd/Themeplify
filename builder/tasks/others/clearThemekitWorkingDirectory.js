@@ -1,4 +1,4 @@
-const { gulp, clean }   = global.buildify.packages;
+const { gulp, clean }   = buildify.packages;
 const files             = buildify.files;
 const { themePath }     = buildify.helpers;
 

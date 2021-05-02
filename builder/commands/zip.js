@@ -1,4 +1,4 @@
-const { gulp }  = global.buildify.packages;
+const { gulp }  = buildify.packages;
 const build     = require("./build");
 const archive   = require("../tasks/others/archive");
 

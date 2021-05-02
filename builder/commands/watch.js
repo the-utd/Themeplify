@@ -10,7 +10,7 @@ const build = require("../commands/build");
 
 const path			= require("path");
 const fs			= require("fs");
-const { gulp }      = global.buildify.packages;
+const { gulp }      = buildify.packages;
 const { themeRoot }	= buildify;
 const files         = buildify.files;
 

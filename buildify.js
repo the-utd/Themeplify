@@ -1,3 +1,5 @@
+const packageJSON = require("./package.json");
+
 function buildifyRequire(packageName) {
     // some additional logic for require
 
@@ -28,6 +30,8 @@ buildify.packages = {
     cached: buildify.require("gulp-cached"),
     clean: buildify.require("gulp-clean"),
     copy: buildify.require("gulp-copy"),
+    download: buildify.require("gulp-download2"),
+	decompress: buildify.require("gulp-decompress"),
     filter: buildify.require("gulp-filter"),
     gulpif: buildify.require("gulp-if"),
     minify: buildify.require("gulp-minify"),
@@ -259,9 +263,21 @@ module.exports = function (callback) {
             },
             composedCallback
         )
+		.command(
+			"create [archive]",
+			"create new project",
+			(yargs) => {
+				return yargs
+					.option("archive", {
+						describe: "Url or path to zip archive",
+						default: "https://github.com/the-utd/Themeplify-Theme/archive/refs/heads/main.zip"
+					});
+			},
+			composedCallback
+		)
         .help()
         .wrap(null)
         .demandCommand(1)
-        .version('v1.0.3')
+        .version(`v${packageJSON.version}`)
         .argv;
 };
