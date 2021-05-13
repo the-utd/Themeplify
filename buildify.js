@@ -1,3 +1,5 @@
+const packageJSON = require("./package.json");
+
 function buildifyRequire(packageName) {
     // some additional logic for require
 
@@ -28,6 +30,8 @@ buildify.packages = {
     cached: buildify.require("gulp-cached"),
     clean: buildify.require("gulp-clean"),
     copy: buildify.require("gulp-copy"),
+    download: buildify.require("gulp-download2"),
+	decompress: buildify.require("gulp-decompress"),
     filter: buildify.require("gulp-filter"),
     gulpif: buildify.require("gulp-if"),
     minify: buildify.require("gulp-minify"),
@@ -217,6 +221,11 @@ module.exports = function (callback) {
             "deploy files into Shopify and run watch",
             (yargs) => {
                 yargsShopifyOptions(yargs)
+					.option("force", {
+						describe: "Deploy force with deleting files on Shopify",
+						type: "boolean",
+						default: false
+					})
                     .option("port", {
                         describe: 'Development server port',
                         type: 'number',
@@ -235,6 +244,11 @@ module.exports = function (callback) {
             "deploy files into Shopify",
             (yargs) => {
                 yargsShopifyOptions(yargs)
+					.option("force", {
+						describe: "Deploy force with deleting files on Shopify",
+						type: "boolean",
+						default: false
+					})
                     .positional('files', {
                         describe: 'Files to download from Shopify',
                         type: 'array',
@@ -259,9 +273,21 @@ module.exports = function (callback) {
             },
             composedCallback
         )
+		.command(
+			"create [archive]",
+			"create new project",
+			(yargs) => {
+				return yargs
+					.option("archive", {
+						describe: "Url or path to zip archive",
+						default: "https://github.com/the-utd/Themeplify-Theme/archive/refs/heads/main.zip"
+					});
+			},
+			composedCallback
+		)
         .help()
         .wrap(null)
         .demandCommand(1)
-        .version('v1.0.5')
+        .version(`v${packageJSON.version}`)
         .argv;
 };

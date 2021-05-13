@@ -12,7 +12,9 @@ async function deploy() {
 			"themeid": config["theme_id"],
 			"ignoredFiles": config.ignore_files,
 			"env": config.env,
-			"allowLive": true
+			"allowLive": true,
+			"nodelete": !config.force,
+			"allenvs": config.allenvs
 		}, {
 			cwd: themeRoot,
 			logLevel: "silent"

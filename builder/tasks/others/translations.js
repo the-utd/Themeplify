@@ -3,7 +3,9 @@ const { gulp, rename }  = buildify.packages;
 const { translations }  = buildify.functions.others;
 
 const buildTranslations = () => {
-    return gulp.src(`./src/locales/*.default.json`)
+    return gulp.src(`./src/locales/*.default.json`, {
+			allowEmpty: true
+		})
         .pipe(translations())
         .pipe(rename("index.translations.liquid"))
         .pipe(gulp.dest(themePath('./dist/templates')));

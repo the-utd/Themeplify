@@ -4,7 +4,6 @@ const path 			= require("path");
 
 const {
     yaml,
-    gulplog,
     ansi,
     exit
 } = buildify.packages;
@@ -15,7 +14,8 @@ const options = {
     env: argv.env || "development",
     dir: argv.dir,
     config: argv.config || "config.yml",
-    force: argv.force || false
+    force: argv.force || false,
+	allenvs: argv.allenvs || false,
 };
 
 try {

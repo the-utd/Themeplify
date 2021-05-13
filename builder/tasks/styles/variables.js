@@ -3,7 +3,9 @@ const { gulp, rename }  = buildify.packages;
 const { variables }     = buildify.functions.styles;
 
 const buildCssVarianblesFromSettings = () => {
-    return gulp.src(`./src/config/settings_schema.json`)
+    return gulp.src(`./src/config/settings_schema.json`, {
+			allowEmpty: true
+		})
         .pipe(variables())
         .pipe(rename("variables.css.liquid"))
         .pipe(gulp.dest(themePath('./dist/snippets')));
