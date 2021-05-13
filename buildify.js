@@ -221,6 +221,11 @@ module.exports = function (callback) {
             "deploy files into Shopify and run watch",
             (yargs) => {
                 yargsShopifyOptions(yargs)
+					.option("force", {
+						describe: "Deploy force with deleting files on Shopify",
+						type: "boolean",
+						default: false
+					})
                     .option("port", {
                         describe: 'Development server port',
                         type: 'number',
@@ -239,6 +244,11 @@ module.exports = function (callback) {
             "deploy files into Shopify",
             (yargs) => {
                 yargsShopifyOptions(yargs)
+					.option("force", {
+						describe: "Deploy force with deleting files on Shopify",
+						type: "boolean",
+						default: false
+					})
                     .positional('files', {
                         describe: 'Files to download from Shopify',
                         type: 'array',

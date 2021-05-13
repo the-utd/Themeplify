@@ -18,6 +18,7 @@ module.exports = function yargsShopifyOptions(yargs) {
         .option("allenvs", {
             describe: "Will run this command for each environment in your config file",
             default: false,
+			type: "boolean",
             alias: "a"
         })
         .option("help", {
