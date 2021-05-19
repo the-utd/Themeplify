@@ -11,7 +11,7 @@ module.exports = (jsFiles = files.js, options = {}) => {
 	return new Promise((resolve, reject) => {
 		const entryFiles = entries('src/scripts/**.js');
 
-		if(!entryFiles.length) {
+		if(entryFiles && !Object.values(entryFiles).length) {
 			return resolve(true);
 		}
 
