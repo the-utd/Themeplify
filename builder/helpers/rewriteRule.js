@@ -25,7 +25,7 @@ module.exports = function rewriteRule(rule, port = 3000) {
 
             try{
                 if(fs.existsSync(path.join(themeRoot, 'dist/assets', refactoredFileName))){
-                    return `https://localhost:${port}/assets/${refactoredFileName}`;
+                    return `https://${req.headers.host}/assets/${refactoredFileName}`;
                 }
             }catch (err) {}
 

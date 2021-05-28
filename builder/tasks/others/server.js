@@ -61,12 +61,16 @@ const createServer = async () => {
 			rewriteRule(/(http:|https:)?\/\/cdn\.shopify\.com\/(?<folder>(?!shopifycloud)(?!s\/javascripts)(?!s\/assets\/storefront)\w+\/)+(?<file>(?!shop_events_listener)[-\w^&'@{}[\],$=!#().]+)(\?(v=\d+))?/gm, port),
 			{
 				match: new RegExp(`(http:|https:)?//${config.shop}`, 'gm'),
-				replace: `https://localhost:${port}`
+				fn: function (req, res, match) {
+					return `https://${req.headers.host}`
+				}
 			},
 			...(shop.domain ? [
 				{
 					match: new RegExp(`(http:|https:)?//${shop.domain}`, 'gm'),
-					replace: `https://localhost:${port}`
+					fn: function (req, res, match) {
+						return `https://${req.headers.host}`
+					}
 				}
 			] : [])
 		];
