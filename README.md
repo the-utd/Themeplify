@@ -51,12 +51,12 @@ development:
     - config/settings_data.json
 
 production:
-	password: XXXXXXXXXXXXXX
-	theme_id: XXXXXXXXXXXXXX
-	store: XXXXXXXXXXXXXX.myshopify.com
-	preview_url: XXXXXXXXXXXXXX.shopifypreview.com <= [NOT REQUIRED]
-	ignore_files:
-		- config/settings_data.json
+  password: XXXXXXXXXXXXXX
+  theme_id: XXXXXXXXXXXXXX
+  store: XXXXXXXXXXXXXX.myshopify.com
+  preview_url: XXXXXXXXXXXXXX.shopifypreview.com <= [NOT REQUIRED]
+  ignore_files:
+    - config/settings_data.json
 ```
 
 **Note: Some Shopify Apps can be broken on localhost, so you can pass additional "preview_url" param to your enviroment to fix this issue,but you will not be able to use checkout (Shopify Checkout does not work with Shopify Preview links)**
