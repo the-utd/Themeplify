@@ -1,8 +1,27 @@
 # Shopify builder - Themeplify
 
+---
+
 ## Usage
 **Node.js version 14.0.0 or higher**
 
+## Install
+
+**Global Install:**
+
+* Install using [npm](https://www.npmjs.com/):
+```bash
+npm install -g @the-utd/themeplify
+```
+
+* Install using [yarn](https://yarnpkg.com/):
+```bash
+yarn global add @the-utd/themeplify
+```
+
+`Global install using npm is preferable way to install package globally`
+
+**Local Install:**
 * Install all dependencies with [yarn](https://yarnpkg.com/)
 ```bash
 yarn add --dev @the-utd/themeplify
@@ -20,14 +39,31 @@ development:
     - config/settings_data.json
 ```
 
-* Download your working theme
-```bash
-yarn download
+**Note:** You can use multiple environments using different environments names. Example:
+
+```yaml
+development:
+  password: XXXXXXXXXXXXXX
+  theme_id: XXXXXXXXXXXXXX
+  store: XXXXXXXXXXXXXX.myshopify.com
+  preview_url: XXXXXXXXXXXXXX.shopifypreview.com <= [NOT REQUIRED]
+  ignore_files:
+    - config/settings_data.json
+
+production:
+	password: XXXXXXXXXXXXXX
+	theme_id: XXXXXXXXXXXXXX
+	store: XXXXXXXXXXXXXX.myshopify.com
+	preview_url: XXXXXXXXXXXXXX.shopifypreview.com <= [NOT REQUIRED]
+	ignore_files:
+		- config/settings_data.json
 ```
 
-* Use [basic commands](#basic-commands) for work with your theme
+**Note: Some Shopify Apps can be broken on localhost, so you can pass additional "preview_url" param to your enviroment to fix this issue,but you will not be able to use checkout (Shopify Checkout does not work with Shopify Preview links)**
 
 ## Basic commands
+
+Basic commands for work with your theme:
 
 `yarn build` - Build files
 
@@ -42,6 +78,13 @@ yarn download
 `yarn download` - Download theme files
 
 `yarn zip` - Archives the project
+
+**Using global install you also able to use `create` command to create new project in empty directory:**
+
+`themeplify create [archive]` - Create new project from scratch. You can also pass additional param `archive` - link to zip archive to use your own boilerplate.
+Default boilerplate: https://github.com/the-utd/Themeplify-Theme.
+
+Example: `themeplify create https://github.com/the-utd/Themeplify-Theme/archive/refs/heads/main.zip`
 
 ## Basic options
 
