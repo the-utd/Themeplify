@@ -3,33 +3,67 @@ const fs 			= require("fs");
 const path 			= require("path");
 
 const {
-    yaml,
-    ansi,
-    exit,
+	yaml,
+	ansi,
+	exit,
 } = buildify.packages;
 
 const argv 		= buildify.args;
 
 const options = {
-    env: argv.env || "development",
-    dir: argv.dir,
-    config: argv.config || "config.yml",
-    force: argv.force || false,
+	env: argv.env || "development",
+	dir: argv.dir,
+	config: argv.config || "config.yml",
+	force: argv.force || false,
 	allenvs: argv.allenvs || false,
+	password: argv.password,
+	theme_id: argv.themeid,
+	store: argv.store,
+	noIgnore: argv.noignore || false,
 };
 
 try {
-	const configFilePath = path.join(themeRoot, options.config);
-	if (!fs.existsSync(configFilePath)) {
-		throw new Error(`"${options.config} does not exist"`);
+	let config = {};
+
+	if(options.password) {
+		config = {
+			...config,
+			password: options.password
+		};
 	}
 
-    const environments = yaml.parse(fs.readFileSync(configFilePath, "utf8"));
-    if(!Object.keys(environments).includes(options.env)) {
-        throw new Error(`environment "${options.env}" not exist`);
-    }
+	if(options.theme_id) {
+		config = {
+			...config,
+			theme_id: options.theme_id
+		};
+	}
 
-    const config = environments[options.env];
+	if(options.store) {
+		config = {
+			...config,
+			store: options.store
+		};
+	}
+
+	const configRequired = !options.password || !options.theme_id || !options.store;
+	if(configRequired) {
+		const configFilePath = path.join(themeRoot, options.config);
+		if (!fs.existsSync(configFilePath)) {
+			throw new Error(`"${options.config} does not exist"`);
+		}
+
+		const environments = yaml.parse(fs.readFileSync(configFilePath, "utf8"));
+		if(!Object.keys(environments).includes(options.env)) {
+			throw new Error(`environment "${options.env}" not exist`);
+		}
+
+		config = {
+			...environments[options.env],
+			...config
+		};
+	}
+
 	if(!config.theme_id) {
 		throw new Error("theme_id param is empty");
 	}
@@ -42,24 +76,24 @@ try {
 		throw new Error("store param is empty");
 	}
 
-    delete options["config"];
+	delete options["config"];
 
-    config["ignore_files"] = [
-        ...new Set([
-            ...(config["ignore_files"] || []),
-            "settings_data.json",
-            "config/settings_data.json"
-        ])
-    ];
+	config["ignore_files"] = [
+		...new Set([
+			...(config["ignore_files"] || []),
+			"settings_data.json",
+			"config/settings_data.json"
+		])
+	];
 
-    config["timeout"] = config["timeout"] || "120s";
+	config["timeout"] = config["timeout"] || "120s";
 
-    buildify.options.themekit = {
-        ...options,
-        ...config
-    };
+	buildify.options.themekit = {
+		...options,
+		...config
+	};
 } catch (error) {
 	console.warn(ansi.red(`Error: ${error.message}`));
 
-    exit(0);
+	exit(0);
 }

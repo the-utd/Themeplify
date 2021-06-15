@@ -20,7 +20,9 @@ async function watch() {
 				"/([a-zA-z0-9\\_\\-\\.]+)\.build\.map\.js/",
 			],
 			"env": config.env,
-			"allowLive": true
+			"allowLive": true,
+			"noIgnore": config.noIgnore,
+			"timeout": config.timeout,
 		}, {
 			cwd: themeRoot,
 			logLevel: "all"

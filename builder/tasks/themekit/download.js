@@ -22,7 +22,9 @@ async function download() {
 			"themeid": config["theme_id"],
 			"ignoredFiles": ignore_files,
 			"env": config.env,
-			"allowLive": true
+			"allowLive": true,
+			"noIgnore": config.noIgnore,
+			"timeout": config.timeout,
 		}, {
 			cwd: themeRoot,
 			logLevel: "silent"

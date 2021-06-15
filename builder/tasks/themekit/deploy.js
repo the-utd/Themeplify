@@ -14,7 +14,9 @@ async function deploy() {
 			"env": config.env,
 			"allowLive": true,
 			"nodelete": !config.force,
-			"allenvs": config.allenvs
+			"allenvs": config.allenvs,
+			"noIgnore": config.noIgnore,
+			"timeout": config.timeout,
 		}, {
 			cwd: themeRoot,
 			logLevel: "silent"
