@@ -234,6 +234,7 @@ module.exports = function (callback) {
 					})
 					.option("serverless", {
 						describe: "Will run this command without dev server",
+						type: 'boolean',
 						default: false
 					});
 			},

@@ -5,6 +5,21 @@ module.exports = function yargsShopifyOptions(yargs) {
             default: "config.yml",
             alias: "c"
         })
+		.option("password", {
+			describe: "Will run this command without dev server",
+			type: 'string',
+			alias: "s",
+		})
+		.option("store", {
+			describe: "Will run this command without dev server",
+			type: 'string',
+			alias: "s",
+		})
+		.option("themeid", {
+			describe: "Will run this command without dev server",
+			type: 'number',
+			alias: "t",
+		})
         .option("dir", {
             describe: "Directory that command will take effect.",
             alias: "d",
@@ -21,6 +36,11 @@ module.exports = function yargsShopifyOptions(yargs) {
 			type: "boolean",
             alias: "a"
         })
+		.option("noignore", {
+			describe: "Will disable config ignores so that all files can be changed",
+			type: "boolean",
+			default: false,
+		})
         .option("help", {
             describe: "Show command help",
             default: false,
