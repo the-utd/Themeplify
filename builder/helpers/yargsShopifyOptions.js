@@ -6,17 +6,17 @@ module.exports = function yargsShopifyOptions(yargs) {
             alias: "c"
         })
 		.option("password", {
-			describe: "Will run this command without dev server",
+			describe: "Theme password. This will override what is in your config.yml",
 			type: 'string',
 			alias: "s",
 		})
 		.option("store", {
-			describe: "Will run this command without dev server",
+			describe: "Your shopify domain. This will override what is in your config.yml",
 			type: 'string',
 			alias: "s",
 		})
 		.option("themeid", {
-			describe: "Will run this command without dev server",
+			describe: "Theme id. This will override what is in your config.yml",
 			type: 'number',
 			alias: "t",
 		})
