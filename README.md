@@ -111,5 +111,5 @@ All recent changes are available here: [changelog](./docs/changelog.md).
 Bugs and feature-request here: [issues](/issues).
 
 ## Maintainers & Contributors
-@devoiutd - core maintainer
-@savchukoleksii
+- @devoiutd - core maintainer
+- @savchukoleksii
