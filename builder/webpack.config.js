@@ -1,6 +1,7 @@
 const { entries, themePath } = buildify.helpers;
 const fs			= require("fs");
 const files 		= buildify.files;
+const { webpack }   = buildify.packages;
 
 const webpackConfig = {
 	name: "javascript",
@@ -49,7 +50,9 @@ const webpackConfig = {
 		aggregateTimeout: 600,
 		poll: 1000,
 	},
-	plugins: []
+	plugins: [
+		new webpack.HotModuleReplacementPlugin()
+	]
 };
 
 let config 			= webpackConfig;

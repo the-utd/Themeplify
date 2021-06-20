@@ -20,6 +20,7 @@ const options = {
 	theme_id: argv.themeid,
 	store: argv.store,
 	noIgnore: argv.noignore || false,
+	timeout: argv.timeout || "120s",
 };
 
 try {
@@ -86,7 +87,7 @@ try {
 		])
 	];
 
-	config["timeout"] = config["timeout"] || "120s";
+	config["timeout"] = options.timeout || config["timeout"] || "120s";
 
 	buildify.options.themekit = {
 		...options,

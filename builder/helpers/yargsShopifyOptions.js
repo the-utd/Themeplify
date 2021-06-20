@@ -30,6 +30,10 @@ module.exports = function yargsShopifyOptions(yargs) {
             default: "development",
             alias: "e"
         })
+		.option("timeout", {
+			describe: "The timeout to kill any stalled processes. This will override what is in your config.yml",
+			type: "string"
+		})
         .option("allenvs", {
             describe: "Will run this command for each environment in your config file",
             default: false,
@@ -38,6 +42,11 @@ module.exports = function yargsShopifyOptions(yargs) {
         })
 		.option("noignore", {
 			describe: "Will disable config ignores so that all files can be changed",
+			type: "boolean",
+			default: false,
+		})
+		.option("preview", {
+			describe: "Will use preview link as proxy source",
 			type: "boolean",
 			default: false,
 		})

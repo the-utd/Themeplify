@@ -45,13 +45,13 @@ const createServer = async () => {
 			}
 		}).then(response => response.data).then(response => response.shop);
 
-		let preview_url = config["preview_url"];
-		if(!preview_url) {
-			preview_url = `https://${shop.domain ? shop.domain : config.store}/?preview_theme_id=${config["theme_id"]}`;
+		let preview_url = `https://${shop.domain ? shop.domain : config.store}/?preview_theme_id=${config["theme_id"]}`;
+		if(argv.preview && config["preview_url"]) {
+			preview_url = config["preview_url"];
 		}
 
 		const options = {
-			hot: false, // should always be true --- BrowserSync without HMR is pretty pointless
+			hot: true, // should always be true --- BrowserSync without HMR is pretty pointless
 			inline: true,
 			devServer: true,
 			browserSync: true
@@ -83,13 +83,13 @@ const createServer = async () => {
 
 				return {
 					webpackHotMiddleware: 'webpack-hot-middleware/client?reload=true',
-					// ...(Object.keys(entryFiles).reduce((entries, key) => {
-					// 	return {
-					// 		...entries,
-					// 		[key]: [`webpack-hot-middleware/client?name=${key}`, entryFiles[key]]
-					// 	}
-					// }, {})),
-					...entryFiles
+					...(Object.keys(entryFiles).reduce((entries, key) => {
+						return {
+							...entries,
+							[key]: [`webpack-hot-middleware/client?name=${key}`, entryFiles[key]]
+						}
+					}, {})),
+					// ...entryFiles
 				}
 			}
 		});
@@ -143,7 +143,6 @@ const createServer = async () => {
 		};
 
 		const browserSyncOptions = {
-			host: "localhost",
 			port: port,
 			notify: false,
 			directory: true,
