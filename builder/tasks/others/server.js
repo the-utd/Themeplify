@@ -89,7 +89,6 @@ const createServer = async () => {
 							[key]: [`webpack-hot-middleware/client?name=${key}`, entryFiles[key]]
 						}
 					}, {})),
-					// ...entryFiles
 				}
 			}
 		});
