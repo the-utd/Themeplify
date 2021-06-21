@@ -2,35 +2,38 @@ const fs    = require("fs");
 const path  = require("path");
 
 const { themeRoot }	    = buildify;
-const { gulp, exit }    = buildify.packages;
-const {
-    errorLogger,
-} = buildify.helpers;
+const { gulp, exit, ansi }    = buildify.packages;
 
 const args = buildify.args;
 
-const configWatch = (cb) => {
-    try {
-        const config 		= args.config || "config.yml";
-        const configPath 	= path.join(themeRoot, config);
-        try {
-            fs.readFileSync(configPath, "utf8");
-        } catch (error) {
-            throw new Error("Config file not exist");
-        }
+const configWatch = async () => {
+	try {
+		const config 		= args.config || "config.yml";
+		const configPath 	= path.join(themeRoot, config);
+		try {
+			fs.readFileSync(configPath, "utf8");
+		} catch (error) {
+			throw new Error("Config file not exist");
+		}
 
-        const configStream = gulp.watch(configPath, function configWatch() {
-            configStream.close();
+		let watchTask = null;
 
-            throw new Error("The config file has been changed");
-        });
-    } catch (error) {
-        errorLogger(error);
+		function configWatch() {
+			watchTask.close(1);
 
-        exit(1);
-    }
+			console.warn(ansi.red("The config file has been changed. Stop processing upload"));
 
-    cb();
+			process.exit(1);
+		}
+
+		configWatch.displayName = "config:watch";
+
+		watchTask = gulp.watch(configPath, configWatch);
+	} catch (error) {
+		console.warn(ansi.red(error.message));
+
+		process.exit(1);
+	}
 };
 
 configWatch.displayName = "config:watch";
