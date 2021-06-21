@@ -2,8 +2,6 @@ const fs 			= require("fs");
 const packageJSON 	= require(`${__dirname}/package.json`);
 
 function buildifyRequire(packageName) {
-	// some additional logic for require
-
 	return require(packageName);
 }
 
