@@ -65,21 +65,19 @@ production:
 
 Basic commands for work with your theme:
 
-`yarn build` - Build files
+`themeplify build` - Build files
 
-`yarn deploy` - Build and deploy files
+`themeplify deploy` - Build and deploy files
 
-`yarn start` - Build, deploy and watch files
+`themeplify start` - Build, deploy and watch files
 
-`yarn watch` - Watch files
+`themeplify watch` - Watch files
 
-`yarn server` - Run Proxy server for the theme
+`themeplify server` - Run Proxy server for the theme
 
-`yarn download` - Download theme files
+`themeplify download` - Download theme files
 
-`yarn zip` - Archives the project
-
-**Using global install you also able to use `create` command to create new project in empty directory:**
+`themeplify zip` - Archives the project
 
 `themeplify create [archive]` - Create new project from scratch. You can also pass additional param `archive` - link to zip archive to use your own boilerplate.
 Default boilerplate: https://github.com/the-utd/Themeplify-Theme.
@@ -95,6 +93,7 @@ Example: `themeplify create https://github.com/the-utd/Themeplify-Theme/archive/
 | -e, --env 		|  Environment from config file 									| "development" 	|
 | -a, --allenvs 	|  Will run this command for each environment in your config file 	| false 			|
 | -n, --nodelete 	|  Will run deploy without removing files from shopify 				| false 			|
+| --preview 		|  Will run webserver using priview link 							| false 			|
 | --nh, --nohooks 	|  Will skip git hooks 												| false 			|
 | --help 			|  Show help 														|  					|
 

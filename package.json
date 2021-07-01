@@ -1,6 +1,6 @@
 {
   "name": "@the-utd/themeplify",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "",
   "main": "index.js",
   "homepage": "https://github.com/the-utd/Themeplify/blob/main/README.md",
@@ -21,6 +21,7 @@
   "dependencies": {
     "@babel/core": "^7.8.6",
     "@babel/preset-env": "^7.8.6",
+    "@savchukoleksii/gulp-shopify-theme-translations-tool": "^0.0.1",
     "@shopify/themekit": "^1.1.3",
     "autoprefixer": "^9.7.4",
     "axios": "^0.21.0",

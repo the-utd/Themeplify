@@ -55,7 +55,8 @@ buildify.packages = {
 	webpackStream: buildify.require("webpack-stream"),
 	yaml: buildify.require("yaml"),
 	yargs: yargs,
-	themekit: buildify.require("@shopify/themekit")
+	themekit: buildify.require("@shopify/themekit"),
+	translations: buildify.require("@savchukoleksii/gulp-shopify-theme-translations-tool"),
 };
 
 const { findRoot } 	        = buildify.packages;

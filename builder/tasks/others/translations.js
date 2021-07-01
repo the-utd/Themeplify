@@ -1,6 +1,5 @@
 const { themePath }     = buildify.helpers;
-const { gulp, rename }  = buildify.packages;
-const { translations }  = buildify.functions.others;
+const { gulp, rename, translations }  = buildify.packages;
 
 const buildTranslations = () => {
     return gulp.src(`./src/locales/*.default.json`, {

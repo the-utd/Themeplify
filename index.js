@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const builder 	= require("./buildify");
+const builder 	= require("./themeplify");
 const { spawn } = buildify.packages;
 
 function callback() {
@@ -16,4 +16,4 @@ function callback() {
 	});
 }
 
-builder(callback); 
+builder(callback);
