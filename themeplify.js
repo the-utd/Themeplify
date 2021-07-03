@@ -1,65 +1,66 @@
 const fs 			= require("fs");
 const packageJSON 	= require(`${__dirname}/package.json`);
 
-function buildifyRequire(packageName) {
+function themeplifyRequire(packageName) {
 	return require(packageName);
 }
 
-const sass 	    = buildifyRequire("gulp-sass");
-sass.compiler 	= buildifyRequire("sass");
+const sass 	    = themeplifyRequire("gulp-sass");
+sass.compiler 	= themeplifyRequire("sass");
 
-global.buildify = {
-	require: buildifyRequire,
+global.themeplify = {
+	require: themeplifyRequire,
 };
 
-const { hideBin }   = buildify.require("yargs/helpers");
-const yargs         = buildify.require("yargs")(hideBin(process.argv));
+const { hideBin }   = themeplify.require("yargs/helpers");
+const yargs         = themeplify.require("yargs")(hideBin(process.argv));
 
-buildify.packages = {
-	autoprefixer: buildify.require("autoprefixer"),
-	ansi: buildify.require("gulp-cli/lib/shared/ansi"),
-	exit: buildify.require("gulp-cli/lib/shared/exit"),
-	axios: buildify.require("axios"),
-	browserSync: buildify.require("browser-sync"),
-	spawn: buildify.require("cross-spawn"),
-	cssnano: buildify.require("cssnano"),
-	fibers: buildify.require("fibers"),
-	findRoot: buildify.require("find-root"),
-	gulp: buildify.require("gulp"),
-	cached: buildify.require("gulp-cached"),
-	clean: buildify.require("gulp-clean"),
-	copy: buildify.require("gulp-copy"),
-	download: buildify.require("gulp-download2"),
-	decompress: buildify.require("gulp-decompress"),
-	filter: buildify.require("gulp-filter"),
-	gulpif: buildify.require("gulp-if"),
-	minify: buildify.require("gulp-minify"),
-	plumber: buildify.require("gulp-plumber"),
-	postcss: buildify.require("gulp-postcss"),
-	prettier: buildify.require("gulp-prettier"),
-	rename: buildify.require("gulp-rename"),
+themeplify.packages = {
+	autoprefixer: themeplify.require("autoprefixer"),
+	ansi: themeplify.require("gulp-cli/lib/shared/ansi"),
+	exit: themeplify.require("gulp-cli/lib/shared/exit"),
+	axios: themeplify.require("axios"),
+	browserSync: themeplify.require("browser-sync"),
+	spawn: themeplify.require("cross-spawn"),
+	cssnano: themeplify.require("cssnano"),
+	fibers: themeplify.require("fibers"),
+	findRoot: themeplify.require("find-root"),
+	gulp: themeplify.require("gulp"),
+	cached: themeplify.require("gulp-cached"),
+	clean: themeplify.require("gulp-clean"),
+	copy: themeplify.require("gulp-copy"),
+	download: themeplify.require("gulp-download2"),
+	decompress: themeplify.require("gulp-decompress"),
+	filter: themeplify.require("gulp-filter"),
+	gulpif: themeplify.require("gulp-if"),
+	minify: themeplify.require("gulp-minify"),
+	plumber: themeplify.require("gulp-plumber"),
+	postcss: themeplify.require("gulp-postcss"),
+	prettier: themeplify.require("gulp-prettier"),
+	rename: themeplify.require("gulp-rename"),
 	sass: sass,
-	sassInheritance: buildify.require("gulp-sass-inheritance"),
-	sourcemaps: buildify.require("gulp-sourcemaps"),
-	svgo: buildify.require("gulp-svgo"),
-	zip: buildify.require("gulp-zip"),
-	gulplog: buildify.require("gulplog"),
-	datetime: buildify.require("node-datetime"),
-	promptConfirm: buildify.require("prompt-confirm"),
-	serveStatic: buildify.require("serve-static"),
-	through: buildify.require("through2"),
-	webpack: buildify.require("webpack"),
-	webpackDevMiddleware: buildify.require("webpack-dev-middleware"),
-	webpackDevServer: buildify.require("webpack-dev-middleware"),
-	webpackHotMiddleware: buildify.require("webpack-hot-middleware"),
-	webpackStream: buildify.require("webpack-stream"),
-	yaml: buildify.require("yaml"),
+	sassInheritance: themeplify.require("gulp-sass-inheritance"),
+	sourcemaps: themeplify.require("gulp-sourcemaps"),
+	svgo: themeplify.require("gulp-svgo"),
+	zip: themeplify.require("gulp-zip"),
+	gulplog: themeplify.require("gulplog"),
+	datetime: themeplify.require("node-datetime"),
+	promptConfirm: themeplify.require("prompt-confirm"),
+	serveStatic: themeplify.require("serve-static"),
+	through: themeplify.require("through2"),
+	webpack: themeplify.require("webpack"),
+	webpackDevMiddleware: themeplify.require("webpack-dev-middleware"),
+	webpackDevServer: themeplify.require("webpack-dev-middleware"),
+	webpackHotMiddleware: themeplify.require("webpack-hot-middleware"),
+	webpackStream: themeplify.require("webpack-stream"),
+	yaml: themeplify.require("yaml"),
 	yargs: yargs,
-	themekit: buildify.require("@shopify/themekit"),
-	translations: buildify.require("@savchukoleksii/gulp-shopify-theme-translations-tool"),
+	themekit: themeplify.require("@shopify/themekit"),
+	translations: themeplify.require("@savchukoleksii/gulp-shopify-theme-translations-tool"),
+	settings: themeplify.require("@savchukoleksii/gulp-shopify-theme-settings-tool"),
 };
 
-const { findRoot } 	        = buildify.packages;
+const { findRoot } 	        = themeplify.packages;
 const { join, normalize } 	= require("path");
 
 const workingDirectory 	= process.cwd();
@@ -90,14 +91,14 @@ function getDefaultGulpPath() {
 
 const defaultGulpPath 	= getDefaultGulpPath();
 
-global.buildify = {
-	...buildify,
+global.themeplify = {
+	...themeplify,
 	gulpFile: join(currentDirectory, 'gulpfile.js'),
 	gulpPath: defaultGulpPath,
 	themeRoot: themeRoot,
 }
 
-buildify.files = {
+themeplify.files = {
 	src: "src",
 	dist: "dist",
 	themekit: {
@@ -165,7 +166,7 @@ buildify.files = {
 
 const yargsShopifyOptions = require("./builder/helpers/yargsShopifyOptions");
 
-buildify.helpers = {
+themeplify.helpers = {
 	entries: require("./builder/helpers/entries"),
 	themePath: require("./builder/helpers/themePath"),
 	errorLogger: require("./builder/helpers/errorLogger"),
@@ -174,17 +175,17 @@ buildify.helpers = {
 	rewriteRule: require("./builder/helpers/rewriteRule"),
 };
 
-buildify.options = {
+themeplify.options = {
 	postcss: {
 		plugins: {
-			autoprefixer: buildify.require("autoprefixer"),
-			cssImport: buildify.require("postcss-import"),
+			autoprefixer: themeplify.require("autoprefixer"),
+			cssImport: themeplify.require("postcss-import"),
 		}
 	},
 	webpack: require("./builder/webpack.config"),
 };
 
-buildify.functions = {
+themeplify.functions = {
 	images: {
 		svg: require("./builder/functions/images/svg"),
 	},
@@ -198,18 +199,16 @@ buildify.functions = {
 		minify: require("./builder/functions/styles/minify"),
 	},
 	others: {
-		translations: require("./builder/functions/others/translations"),
-		settings: require("./builder/functions/others/settings"),
 		copy: require("./builder/functions/others/copy"),
 	}
 };
 
 module.exports = function (callback) {
 	const composedCallback = (args) => {
-		buildify.args       = args;
-		buildify.command    = args["_"][0];
+		themeplify.args       = args;
+		themeplify.command    = args["_"][0];
 
-		if(["start", "watch", "deploy", "download"].includes(buildify.command)) {
+		if(["start", "watch", "deploy", "download"].includes(themeplify.command)) {
 			require("./builder/config/themekit");
 		}
 
@@ -217,7 +216,7 @@ module.exports = function (callback) {
 	};
 
 	return yargs
-		.scriptName("buildify")
+		.scriptName("themeplify")
 		.command("build", "build project files", () => {}, composedCallback)
 		.command("zip", "create production ready archive", () => {}, composedCallback)
 		.command(

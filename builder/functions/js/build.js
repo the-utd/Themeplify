@@ -2,10 +2,10 @@ const {
 	gulp,
 	webpack,
 	webpackStream
-} = buildify.packages;
-const { entries } 	= buildify.helpers;
-const webpackConfig = buildify.options.webpack;
-const files 		= buildify.files;
+} = themeplify.packages;
+const { entries } 	= themeplify.helpers;
+const webpackConfig = themeplify.options.webpack;
+const files 		= themeplify.files;
 
 module.exports = (jsFiles = files.js, options = {}) => {
 	return new Promise((resolve, reject) => {

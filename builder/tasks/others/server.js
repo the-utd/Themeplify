@@ -1,5 +1,5 @@
 const path			= require('path');
-const { themeRoot }	= buildify;
+const { themeRoot }	= themeplify;
 const {
 	gulp,
 	axios,
@@ -10,19 +10,19 @@ const {
 	webpackDevMiddleware,
 	webpackHotMiddleware,
 	serveStatic
-} = buildify.packages;
+} = themeplify.packages;
 
 const {
 	rewriteRule,
 	entries,
 	errorLogger
-}	= buildify.helpers;
-const webpackConfig 			= buildify.options.webpack;
-const argv 						= buildify.args;
+}	= themeplify.helpers;
+const webpackConfig 			= themeplify.options.webpack;
+const argv 						= themeplify.args;
 
 let browserSyncServer = null;
 const createServer = async () => {
-	const config = buildify.options.themekit;
+	const config = themeplify.options.themekit;
 
 	try {
 		let port = argv.port || 3000;
@@ -77,6 +77,7 @@ const createServer = async () => {
 
 		const bundler = webpack({
 			...webpackConfig,
+			stats: "detailed",
 			mode: "development",
 			entry: () => {
 				const entryFiles = entries("src/scripts/**.js");

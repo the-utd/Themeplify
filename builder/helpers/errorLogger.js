@@ -1,4 +1,4 @@
-const { ansi, gulplog } = buildify.packages;
+const { ansi, gulplog } = themeplify.packages;
 
 module.exports = function (error) {
     if(!error) {

@@ -1,8 +1,8 @@
-const { themeRoot }	= buildify;
-const { themekit, gulplog, ansi } = buildify.packages;
+const { themeRoot }	= themeplify;
+const { themekit, gulplog, ansi } = themeplify.packages;
 
 async function download() {
-	const config 	= buildify.options.themekit;
+	const config 	= themeplify.options.themekit;
 	const dir		= config.dir;
 
 	const ignore_files 	= [

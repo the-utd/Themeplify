@@ -1,6 +1,6 @@
-const { gulp, clean }   = buildify.packages;
-const files             = buildify.files;
-const { themePath }     = buildify.helpers;
+const { gulp, clean }   = themeplify.packages;
+const files             = themeplify.files;
+const { themePath }     = themeplify.helpers;
 
 function clearThemekitWorkingDirectory() {
     const dir = themePath(files.themekit.watch);

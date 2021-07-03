@@ -1,4 +1,4 @@
-const { gulp, prettier, rename } = buildify.packages;
+const { gulp, prettier, rename } = themeplify.packages;
 
 const svgUpdate = () => {
     return gulp.src("./src/snippets/icon-*.liquid")

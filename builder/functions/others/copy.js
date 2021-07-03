@@ -1,5 +1,5 @@
-const { gulp, copy, plumber } = buildify.packages;
-const files 	= buildify.files;
+const { gulp, copy, plumber } = themeplify.packages;
+const files 	= themeplify.files;
 
 module.exports = (copyFiles = files.copy, options = {}) => {
     return gulp.src(copyFiles, options)

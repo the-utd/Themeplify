@@ -1,4 +1,4 @@
-const { themeRoot }		= buildify;
+const { themeRoot }		= themeplify;
 const {
 	gulp,
 	rename,
@@ -11,11 +11,11 @@ const {
 	cached,
 	sassInheritance,
 	filter
-} = buildify.packages;
+} = themeplify.packages;
 
-const files 	= buildify.files;
+const files 	= themeplify.files;
 const path		= require("path");
-const plugins 	= Object.values(buildify.options.postcss.plugins);
+const plugins 	= Object.values(themeplify.options.postcss.plugins);
 
 module.exports = (scssFiles = files.scss, options = {}) => {
 	return new Promise((resolve, reject) => {

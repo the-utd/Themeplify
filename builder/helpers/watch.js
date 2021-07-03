@@ -1,4 +1,4 @@
-const { gulp }          = buildify.packages;
+const { gulp }          = themeplify.packages;
 const { errorLogger }   = require("./errorLogger");
 
 module.exports = function (path, callback, onDelete = null) {

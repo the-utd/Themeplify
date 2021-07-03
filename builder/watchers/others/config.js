@@ -1,10 +1,10 @@
 const fs    = require("fs");
 const path  = require("path");
 
-const { themeRoot }	    = buildify;
-const { gulp, exit, ansi }    = buildify.packages;
+const { themeRoot }	    = themeplify;
+const { gulp, ansi }    = themeplify.packages;
 
-const args = buildify.args;
+const args = themeplify.args;
 
 const configWatch = async () => {
 	try {

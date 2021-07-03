@@ -1,10 +1,10 @@
-const files = buildify.files;
+const files = themeplify.files;
 const {
     gulp,
     rename,
     postcss,
     cssnano
-} = buildify.packages;
+} = themeplify.packages;
 
 module.exports = (cssFiles = files.minify.css, options = {}) => {
     return new Promise((resolve, reject) => {

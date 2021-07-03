@@ -1,5 +1,5 @@
-const files 	= buildify.files;
-const { gulp, rename, svgo, plumber, through } = buildify.packages;
+const files 	= themeplify.files;
+const { gulp, rename, svgo, plumber, through } = themeplify.packages;
 const path = require("path");
 
 module.exports = (svgFiles = files.svg.general, options = {}) => {

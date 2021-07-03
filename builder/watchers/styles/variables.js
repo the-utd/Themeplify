@@ -1,4 +1,4 @@
-const { gulp } = buildify.packages;
+const { gulp } = themeplify.packages;
 
 const watchCssVariablesBuildFromSettings = () =>  {
     return gulp.watch(`./src/config/settings_schema.json`, gulp.series([

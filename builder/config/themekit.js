@@ -1,4 +1,4 @@
-const { themeRoot }	= buildify;
+const { themeRoot }	= themeplify;
 const fs 			= require("fs");
 const path 			= require("path");
 
@@ -6,9 +6,9 @@ const {
 	yaml,
 	ansi,
 	exit,
-} = buildify.packages;
+} = themeplify.packages;
 
-const argv 		= buildify.args;
+const argv 		= themeplify.args;
 
 const options = {
 	env: argv.env || "development",
@@ -89,7 +89,7 @@ try {
 
 	config["timeout"] = options.timeout || config["timeout"] || "120s";
 
-	buildify.options.themekit = {
+	themeplify.options.themekit = {
 		...options,
 		...config
 	};

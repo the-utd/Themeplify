@@ -1,5 +1,5 @@
-const { gulp, minify } 	= buildify.packages;
-const files 			= buildify.files;
+const { gulp, minify } 	= themeplify.packages;
+const files 			= themeplify.files;
 
 module.exports = (jsFiles = files.minify.js, options = {}) => {
 	return new Promise((resolve, reject) => {

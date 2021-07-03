@@ -1,7 +1,7 @@
 const fs			= require('fs');
 const path			= require('path');
 
-const { themeRoot }	= buildify;
+const { themeRoot }	= themeplify;
 const fileRegex     = /(?<name>.+)\.(?<extension>(css|js))$/gm;
 
 module.exports = function rewriteRule(rule, port = 3000) {

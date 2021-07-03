@@ -1,4 +1,4 @@
-const { gulp, zip, datetime } = buildify.packages;
+const { gulp, zip, datetime } = themeplify.packages;
 
 const archive = () => {
     const now = datetime.create();

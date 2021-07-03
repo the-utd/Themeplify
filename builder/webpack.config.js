@@ -1,12 +1,13 @@
-const { entries, themePath } = buildify.helpers;
+const { entries, themePath } = themeplify.helpers;
 const fs			= require("fs");
-const files 		= buildify.files;
-const { webpack }   = buildify.packages;
+const files 		= themeplify.files;
+const { webpack }   = themeplify.packages;
 
 const webpackConfig = {
 	name: "javascript",
 	mode: "development",
 	entry: () => entries("src/scripts/**.js"),
+	stats: 'errors-only',
 	node: {
 		global: true,
 	},

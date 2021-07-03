@@ -1,4 +1,4 @@
-const { gulp } = buildify.packages;
+const { gulp } = themeplify.packages;
 
 const buildTranslations = require("../../tasks/others/translations");
 

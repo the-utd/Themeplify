@@ -1,4 +1,4 @@
-const { gulp } = buildify.packages;
+const { gulp } = themeplify.packages;
 
 const deploy = require("./deploy");
 const watch = require("./watch");

@@ -1,4 +1,4 @@
-const { gulp }      = buildify.packages;
+const { gulp }      = themeplify.packages;
 const buildScss 	= require("../../tasks/styles/build");
 
 const watchScssCompile = () => {

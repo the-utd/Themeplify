@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 
 const builder 	= require("./themeplify");
-const { spawn } = buildify.packages;
+const { spawn } = themeplify.packages;
 
 function callback() {
 	const args = [
 		...process.argv.splice(2, process.argv.length),
-		"--gulpfile", buildify.gulpFile,
-		"--cwd", buildify.themeRoot,
+		"--gulpfile", themeplify.gulpFile,
+		"--cwd", themeplify.themeRoot,
 	];
 
-	spawn.sync(`${buildify.gulpPath}`, args, {
+	spawn.sync(`${themeplify.gulpPath}`, args, {
 		detached: false,
 		stdio: 'inherit'
 	});

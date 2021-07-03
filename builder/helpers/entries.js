@@ -1,4 +1,4 @@
-const { themeRoot }	= buildify;
+const { themeRoot }	= themeplify;
 const glob			= require('glob');
 const path  		= require("path");
 

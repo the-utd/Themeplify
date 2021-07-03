@@ -1,6 +1,6 @@
 {
   "name": "@the-utd/themeplify",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "",
   "main": "index.js",
   "homepage": "https://github.com/the-utd/Themeplify/blob/main/README.md",
@@ -21,6 +21,7 @@
   "dependencies": {
     "@babel/core": "^7.8.6",
     "@babel/preset-env": "^7.8.6",
+    "@savchukoleksii/gulp-shopify-theme-settings-tool": "^1.0.0",
     "@savchukoleksii/gulp-shopify-theme-translations-tool": "^0.0.1",
     "@shopify/themekit": "^1.1.3",
     "autoprefixer": "^9.7.4",
@@ -62,7 +63,7 @@
     "sass": "^1.29.0",
     "serve-static": "^1.14.1",
     "through2": "^4.0.2",
-    "webpack": "^4.41.6",
+    "webpack": "^5.42.0",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-dev-server": "^3.10.1",
     "webpack-hot-middleware": "^2.25.0",

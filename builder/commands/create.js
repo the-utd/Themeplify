@@ -4,9 +4,9 @@ const {
 	decompress,
 	rename,
 	clean
-}  = buildify.packages;
+}  = themeplify.packages;
 
-const argv = buildify.args;
+const argv = themeplify.args;
 
 const create = gulp.series(
 	function downloadTemplate(){

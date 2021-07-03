@@ -1,5 +1,5 @@
-const files 	= buildify.files;
-const { svg }   = buildify.functions.images;
+const files 	= themeplify.files;
+const { svg }   = themeplify.functions.images;
 
 const svgBuild = () => {
     return svg(files.svg.general);

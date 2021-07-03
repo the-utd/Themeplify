@@ -1,5 +1,5 @@
 'use strict';
-const { through } = buildify.packages;
+const { through } = themeplify.packages;
 const transformSettings = (groups) => {
     const settingTypes = ["color", "text", "image_picker"];
 

@@ -1,4 +1,4 @@
-const { gulp }  = buildify.packages;
+const { gulp }  = themeplify.packages;
 const build     = require("./build");
 const archive   = require("../tasks/others/archive");
 

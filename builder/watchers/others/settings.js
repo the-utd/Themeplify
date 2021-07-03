@@ -1,5 +1,4 @@
-const { gulp } 		= buildify.packages;
-const { watch } 	= buildify.helpers;
+const { gulp } 		= themeplify.packages;
 
 const buildSettings = require("../../tasks/others/settings");
 

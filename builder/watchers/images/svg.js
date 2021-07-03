@@ -1,17 +1,17 @@
 const path		= require("path");
-const files 	= buildify.files;
+const files 	= themeplify.files;
 const {
 	svg,
-}   = buildify.functions.images;
+}   = themeplify.functions.images;
 
 const {
 	gulp,
 	clean
-} = buildify.packages;
+} = themeplify.packages;
 
 const {
 	watch,
-} = buildify.helpers;
+} = themeplify.helpers;
 
 const svgWatch = async () => {
 	return watch(files.svg.general, (svgFiles) => {

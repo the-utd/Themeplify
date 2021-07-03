@@ -9,7 +9,7 @@ const svgBuild          = require("../tasks/images/svg");
 const minifyJs          = require("../tasks/js/minify");
 const clearThemekitWorkingDirectory = require("../tasks/others/clearThemekitWorkingDirectory");
 
-const { gulp } = buildify.packages;
+const { gulp } = themeplify.packages;
 
 const build = gulp.series([
     clearThemekitWorkingDirectory,

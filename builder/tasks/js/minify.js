@@ -1,5 +1,5 @@
-const files         = buildify.files;
-const { minify }    = buildify.functions.js;
+const files         = themeplify.files;
+const { minify }    = themeplify.functions.js;
 
 const minifyJs = () => {
     return minify(files.minify.js);

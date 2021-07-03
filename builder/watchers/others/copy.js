@@ -1,7 +1,7 @@
-const files 			= buildify.files;
-const { copy }  		= buildify.functions.others;
-const { watch } 		= buildify.helpers;
-const { gulp, clean }   = buildify.packages;
+const files 			= themeplify.files;
+const { copy }  		= themeplify.functions.others;
+const { watch } 		= themeplify.helpers;
+const { gulp, clean }   = themeplify.packages;
 
 const copyWatch = () => {
 	return watch(files.copy, (copyFiles, options = {}) => {

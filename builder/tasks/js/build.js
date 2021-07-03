@@ -1,5 +1,5 @@
-const files     = buildify.files;
-const { build } = buildify.functions.js;
+const files     = themeplify.files;
+const { build } = themeplify.functions.js;
 
 const buildJs = () => {
     return build(files.js);

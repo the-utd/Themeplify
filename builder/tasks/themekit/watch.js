@@ -1,8 +1,8 @@
-const { themeRoot }	= buildify;
-const { themekit, gulplog, ansi } = buildify.packages;
+const { themeRoot }	= themeplify;
+const { themekit, gulplog, ansi } = themeplify.packages;
 
 async function watch() {
-	const config = buildify.options.themekit;
+	const config = themeplify.options.themekit;
 
 	try {
 		await themekit.command("watch", {

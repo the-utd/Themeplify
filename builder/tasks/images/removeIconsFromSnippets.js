@@ -1,4 +1,4 @@
-const { gulp, clean } = buildify.packages;
+const { gulp, clean } = themeplify.packages;
 
 const removeIconsFromSnippets = () => {
     return gulp.src("./src/snippets/icon-*.liquid")

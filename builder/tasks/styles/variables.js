@@ -1,6 +1,6 @@
-const { themePath }     = buildify.helpers;
-const { gulp, rename }  = buildify.packages;
-const { variables }     = buildify.functions.styles;
+const { themePath }     = themeplify.helpers;
+const { gulp, rename }  = themeplify.packages;
+const { variables }     = themeplify.functions.styles;
 
 const buildCssVarianblesFromSettings = () => {
     return gulp.src(`./src/config/settings_schema.json`, {
