@@ -121,7 +121,7 @@ themeplify.files = {
 	copy: [
 		"./src/assets/*.*",
 		"./src/config/*.json",
-		"./src/layout/*.{layout,json}",
+		"./src/layout/*.{liquid,json}",
 		"./src/locales/*.json",
 		"./src/sections/*.liquid",
 		"./src/snippets/*.*",
@@ -134,7 +134,7 @@ themeplify.files = {
 		"!./src/assets/*.build.min.{js,css}"
 	],
 	liquid: [
-		"./src/layout/*.liquid"
+		"./src/layout/*.{liquid,json}",
 	],
 	minify: {
 		css: [

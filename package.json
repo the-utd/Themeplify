@@ -1,6 +1,6 @@
 {
   "name": "@the-utd/themeplify",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "",
   "main": "index.js",
   "homepage": "https://github.com/the-utd/Themeplify/blob/main/README.md",
@@ -63,7 +63,7 @@
     "sass": "^1.29.0",
     "serve-static": "^1.14.1",
     "through2": "^4.0.2",
-    "webpack": "^5.42.0",
+    "webpack": "4.45.0",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-dev-server": "^3.10.1",
     "webpack-hot-middleware": "^2.25.0",
