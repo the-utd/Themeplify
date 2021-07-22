@@ -1,7 +1,5 @@
 const {
-	gulp,
 	webpack,
-	webpackStream
 } = themeplify.packages;
 const { entries } 	= themeplify.helpers;
 const webpackConfig = themeplify.options.webpack;
@@ -15,14 +13,18 @@ module.exports = (jsFiles = files.js, options = {}) => {
 			return resolve(true);
 		}
 
-		return gulp.src(jsFiles, options)
-			.pipe(webpackStream({
-				...webpackConfig,
-				entry: entryFiles,
-				mode: "production"
-			}, webpack))
-			.pipe(gulp.dest(files.compileOutput))
-			.on("end", resolve)
-			.on("error", reject);
+		const compiler = webpack({
+			...webpackConfig,
+			entry: entryFiles,
+			mode: "production",
+		});
+
+		try {
+			compiler.run(() => {
+				resolve();
+			})
+		} catch (error) {
+			reject(error);
+		}
 	});
 };
