@@ -101,6 +101,7 @@ global.themeplify = {
 themeplify.files = {
 	src: "src",
 	dist: "dist",
+	settingsDir: "./.themeplify/settings",
 	themekit: {
 		download: "src",
 		watch: "dist"
@@ -200,6 +201,8 @@ themeplify.functions = {
 	},
 	others: {
 		copy: require("./builder/functions/others/copy"),
+		removeSettingsFromJsonTemplates: require("./builder/functions/others/removeSettingsFromJsonTemplates"),
+		mergeSettingsFromDeploymentTheme: require("./builder/functions/others/mergeSettingsFromDeploymentTheme"),
 	}
 };
 

@@ -118,6 +118,9 @@ const createServer = async () => {
 					errorDetails: true,
 					warnings: true,
 					publicPath: false
+				},
+				mimeTypes: {
+					'application/wasm': ['wasm']
 				}
 				// for other settings:
 				// @see https://webpack.js.org/guides/development/#webpack-dev-middleware
