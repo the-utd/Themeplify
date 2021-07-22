@@ -1,4 +1,8 @@
-const { through } = themeplify.packages;
+const { through } 	= themeplify.packages;
+const { themePath } = themeplify.helpers;
+const settingsDir 	= themeplify.files.settingsDir;
+const path 			= require("path");
+const fs			= require("fs");
 
 module.exports = () => {
 	return through.obj(function (file, enc, callback) {
@@ -10,7 +14,7 @@ module.exports = () => {
 		let transformedTemplate = JSON.parse(file.contents.toString('utf-8'));
 
 		try {
-			const filePath = `./.themeplify/settings/templates/${path.basename(file.path)}`;
+			const filePath = themePath(`./${settingsDir}/templates/${path.basename(file.path)}`);
 
 			if (fs.existsSync(filePath)) {
 				const currentSectionFile = fs.readFileSync(filePath, 'utf8');
@@ -32,12 +36,14 @@ module.exports = () => {
 							}
 						}
 					}, {}),
-					order: currentSectionSettings.order.filter(sectionName => {
+					order: transformedTemplate.order.filter(sectionName => {
 						return currentSectionSettings.order.includes(sectionName);
 					})
 				}
 			}
-		} catch (error) {}
+		} catch (error) {
+			console.log(error.message);
+		}
 
 		const content = JSON.stringify(transformedTemplate, null, '\t');
 
