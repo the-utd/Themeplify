@@ -98,10 +98,8 @@ const createServer = async () => {
 			webpackDevMiddleware(bundler, {
 				// IMPORTANT: dev middleware can't access config, so we should
 				// provide publicPath by ourselves
-				path: webpackConfig.output.path,
 				publicPath: webpackConfig.output.publicPath,
 				index: false,
-				quiet: true,
 				// pretty colored output
 				stats: {
 					colors: true,
@@ -116,8 +114,11 @@ const createServer = async () => {
 					source: false,
 					errors: true,
 					errorDetails: true,
-					warnings: true,
+					warnings: false,
 					publicPath: false
+				},
+				mimeTypes: {
+					'application/wasm': ['wasm']
 				}
 				// for other settings:
 				// @see https://webpack.js.org/guides/development/#webpack-dev-middleware

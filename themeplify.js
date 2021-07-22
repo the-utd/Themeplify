@@ -101,6 +101,7 @@ global.themeplify = {
 themeplify.files = {
 	src: "src",
 	dist: "dist",
+	settingsDir: "./.themeplify/settings",
 	themekit: {
 		download: "src",
 		watch: "dist"
@@ -125,14 +126,15 @@ themeplify.files = {
 		"./src/locales/*.json",
 		"./src/sections/*.liquid",
 		"./src/snippets/*.*",
-		"./src/templates/*.{liquid,json}",
-		"./src/templates/customers/*.{liquid,json}",
+		"./src/templates/*.liquid",
+		"./src/templates/customers/*.liquid",
 		"!./src/snippets/variables.liquid",
 		"!./src/templates/index.settings.{liquid,json}",
 		"!./src/templates/index.translations.{liquid,json}",
 		"!./src/assets/*.build.{js,css}",
 		"!./src/assets/*.build.min.{js,css}"
 	],
+	copyJsonTemplates: "./src/templates/*.json",
 	liquid: [
 		"./src/layout/*.{liquid,json}",
 	],
@@ -200,6 +202,9 @@ themeplify.functions = {
 	},
 	others: {
 		copy: require("./builder/functions/others/copy"),
+		removeSettingsFromJsonTemplates: require("./builder/functions/others/removeSettingsFromJsonTemplates"),
+		mergeSettingsFromDeploymentTheme: require("./builder/functions/others/mergeSettingsFromDeploymentTheme"),
+		downloadSettings: require("./builder/functions/others/downloadSettings"),
 	}
 };
 

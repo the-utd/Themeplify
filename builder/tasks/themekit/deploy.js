@@ -1,30 +1,13 @@
-const { themeRoot }	= themeplify;
-const { themekit, gulplog, ansi } = themeplify.packages;
+const { gulp } 							= themeplify.packages;
+const downloadSettings 					= require("./downloadSettings");
+const mergeSettingsFromDeploymentTheme 	= require("./../others/mergeSettingsFromDeploymentTheme");
+const deployFiles 						= require("./deployFiles");
 
-async function deploy() {
-	const config = themeplify.options.themekit;
-
-	try {
-		await themekit.command("deploy", {
-			"dir": config.dir,
-			"store": config.store,
-			"password": config.password,
-			"themeid": config["theme_id"],
-			"ignoredFiles": config.ignore_files,
-			"env": config.env,
-			"allowLive": true,
-			"nodelete": !config.force,
-			"allenvs": config.allenvs,
-			"noIgnore": config.noIgnore,
-			"timeout": config.timeout,
-		}, {
-			cwd: themeRoot,
-			logLevel: "silent"
-		});
-	} catch (error) {
-		gulplog.error(ansi.red(error));
-	}
-}
+const deploy = gulp.series(
+	downloadSettings,
+	mergeSettingsFromDeploymentTheme,
+	deployFiles,
+)
 
 deploy.displayName = "themekit:deploy";
 

@@ -27,6 +27,11 @@ const webpackConfig = {
 				use: {
 					loader: 'babel-loader',
 					options: {
+						"exclude": [
+							// \\ for Windows, \/ for Mac OS and Linux
+							/node_modules[\\\/]core-js/,
+							/node_modules[\\\/]webpack[\\\/]buildin/,
+						],
 						presets: [
 							[
 								"@babel/preset-env",
