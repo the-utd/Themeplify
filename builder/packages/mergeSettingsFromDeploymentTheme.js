@@ -35,7 +35,10 @@ module.exports = () => {
 								...currentSettings
 							}
 						}
-					}, {})
+					}, {}),
+					order: Array.from(new Set([...currentSectionSettings.order, ...transformedTemplate.order])).filter(sectionName => {
+						return transformedTemplate.order.includes(sectionName);
+					})
 				}
 			}
 		} catch (error) {
