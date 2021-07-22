@@ -1,29 +1,13 @@
-const { through } = themeplify.packages;
+const removeSettingsFromJsonTemplates = require("../../packages/removeSettingsFromJsonTemplates")
+const { gulp } = themeplify.packages;
+const { themePath } = themeplify.helpers;
+const settingsDir = themeplify.files.settingsDir;
 
-module.exports = () => {
-	return through.obj(function (file, enc, callback) {
-		if(file === null || file.isDirectory()){
-			callback(null, file);
-			return;
-		}
-
-		const transformedTemplate = JSON.parse(file.contents.toString('utf-8'));
-		const content = JSON.stringify({
-			...transformedTemplate,
-			sections: Object.keys(transformedTemplate.sections).reduce((sections, sectionName) => {
-				const section = transformedTemplate.sections[sectionName];
-
-				return {
-					...sections,
-					[sectionName]: {
-						type: section.type
-					}
-				}
-			}, {}),
-		}, null, '\t');
-
-		file.contents = Buffer.from(content, 'utf-8');
-
-		callback(null, file);
-	});
-}
+module.exports = (copyFiles = `./${settingsDir}/templates/*.json`, options = {}) => {
+	return gulp.src(copyFiles, {
+		allowEmpty: true,
+		...options,
+	})
+	.pipe(removeSettingsFromJsonTemplates())
+	.pipe(gulp.dest(themePath("./src/templates")))
+};

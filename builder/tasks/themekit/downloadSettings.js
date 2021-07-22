@@ -32,7 +32,8 @@ async function downloadSettings() {
 			"timeout": config.timeout,
 			"files": [
 				"config/*.json",
-				"templates/*.json"
+				"templates/*.json",
+				"templates/customers/*.json"
 			]
 		}, {
 			cwd: themeRoot,
