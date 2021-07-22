@@ -20,7 +20,7 @@ module.exports = async (copyFiles = [
 
 	const settingsDir = themeplify.files.settingsDir;
 	if(!fs.existsSync(settingsDir)) {
-		fs.mkdirSync(settingsDir);
+		fs.mkdirSync(settingsDir, { recursive: true });
 	}
 
 	try {
