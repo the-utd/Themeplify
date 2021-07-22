@@ -1,19 +1,33 @@
-const files 			= themeplify.files;
-const { copy }  		= themeplify.functions.others;
+const files 								= themeplify.files;
+const {
+	mergeSettingsFromDeploymentTheme,
+	downloadSettings,
+} 	= themeplify.functions.others;
 const { watch } 		= themeplify.helpers;
 const { gulp, clean }   = themeplify.packages;
 
 const copyWatch = () => {
-	return watch(files.copy, (copyFiles, options = {}) => {
-		function copyFile() {
-			return gulp.series(
-
-			);
+	return watch(files.copyJsonTemplates, (copyFiles, options = {}) => {
+		function downloadFile() {
+			return downloadSettings(copyFiles.replace("./src/", ""));
 		}
 
-		copyFile.displayName = "copy:file";
+		downloadFile.displayName = "themekit:download-settings";
 
-		return copyFile;
+		function mergeSettingsFromDeploymentThemeTask() {
+			return mergeSettingsFromDeploymentTheme(copyFiles);
+		}
+
+		mergeSettingsFromDeploymentThemeTask.displayName = "themekit:merge-settings-from-deployment-theme";
+
+		const copy = gulp.series(
+			downloadFile,
+			mergeSettingsFromDeploymentThemeTask
+		);
+
+		copy.displayName = "copy:file";
+
+		return copy;
 	}, (deleteFiles) => {
 		function removeFiles() {
 			return gulp.src(deleteFiles)

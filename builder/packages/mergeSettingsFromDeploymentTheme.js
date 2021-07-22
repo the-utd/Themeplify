@@ -35,10 +35,7 @@ module.exports = () => {
 								...currentSettings
 							}
 						}
-					}, {}),
-					order: transformedTemplate.order.filter(sectionName => {
-						return currentSectionSettings.order.includes(sectionName);
-					})
+					}, {})
 				}
 			}
 		} catch (error) {

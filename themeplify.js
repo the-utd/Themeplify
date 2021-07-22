@@ -134,6 +134,7 @@ themeplify.files = {
 		"!./src/assets/*.build.{js,css}",
 		"!./src/assets/*.build.min.{js,css}"
 	],
+	copyJsonTemplates: "./src/templates/*.json",
 	liquid: [
 		"./src/layout/*.{liquid,json}",
 	],
@@ -203,6 +204,7 @@ themeplify.functions = {
 		copy: require("./builder/functions/others/copy"),
 		removeSettingsFromJsonTemplates: require("./builder/functions/others/removeSettingsFromJsonTemplates"),
 		mergeSettingsFromDeploymentTheme: require("./builder/functions/others/mergeSettingsFromDeploymentTheme"),
+		downloadSettings: require("./builder/functions/others/downloadSettings"),
 	}
 };
 
