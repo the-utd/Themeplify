@@ -94,6 +94,12 @@ const createServer = async () => {
 			}
 		});
 
+		if(!bundler.getInfrastructureLogger) {
+			bundler.getInfrastructureLogger = () => {
+				return console;
+			}
+		}
+
 		const middleware = [
 			webpackDevMiddleware(bundler, {
 				// IMPORTANT: dev middleware can't access config, so we should
