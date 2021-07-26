@@ -31,8 +31,8 @@ module.exports = () => {
 						return {
 							...sections,
 							[sectionName]: {
+								...currentSettings,
 								type: section.type,
-								...currentSettings
 							}
 						}
 					}, {}),
