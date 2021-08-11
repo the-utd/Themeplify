@@ -20,25 +20,23 @@ module.exports = () => {
 				const currentSectionFile = fs.readFileSync(filePath, 'utf8');
 				const currentSectionSettings = JSON.parse(currentSectionFile);
 
-				const sectionNames = Object.keys(transformedTemplate.sections);
+				const sectionNames = [...(new Set([...Object.keys(currentSectionSettings.sections), ...Object.keys(transformedTemplate.sections)]))];
+				const mergedSections = {
+					...transformedTemplate.sections,
+					...currentSectionSettings.sections
+				};
 
 				transformedTemplate = {
 					...transformedTemplate,
 					sections: sectionNames.reduce((sections, sectionName) => {
-						const section 			= transformedTemplate.sections[sectionName];
-						let currentSettings 	= currentSectionSettings.sections[sectionName];
+						const section = mergedSections[sectionName];
 
 						return {
 							...sections,
-							[sectionName]: {
-								...currentSettings,
-								type: section.type,
-							}
+							[sectionName]: section
 						}
 					}, {}),
-					order: Array.from(new Set([...currentSectionSettings.order, ...transformedTemplate.order])).filter(sectionName => {
-						return transformedTemplate.order.includes(sectionName);
-					})
+					order: Array.from(new Set([...currentSectionSettings.order, ...transformedTemplate.order]))
 				}
 			}
 		} catch (error) {
