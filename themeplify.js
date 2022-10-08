@@ -134,7 +134,10 @@ themeplify.files = {
 		"!./src/assets/*.build.{js,css}",
 		"!./src/assets/*.build.min.{js,css}"
 	],
-	copyJsonTemplates: "./src/templates/*.json",
+	copyJsonTemplates: [
+		"./src/templates/*.json",
+		"./src/templates/customers/*.json"
+	],
 	liquid: [
 		"./src/layout/*.{liquid,json}",
 	],
