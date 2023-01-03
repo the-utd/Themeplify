@@ -190,6 +190,15 @@ themeplify.options = {
 	webpack: require("./builder/webpack.config"),
 };
 
+const configPath = themeplify.helpers.themePath("./builder.config.js");
+let customConfig = {};
+
+if(fs.existsSync(configPath)) {
+	customConfig = require(configPath);
+}
+
+themeplify.customConfig = customConfig || {};
+
 themeplify.functions = {
 	images: {
 		svg: require("./builder/functions/images/svg"),
