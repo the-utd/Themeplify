@@ -6,7 +6,9 @@ const buildSettings     = require("../tasks/others/settings");
 const buildCssVarianblesFromSettings = require("../tasks/styles/variables");
 const copyBuild         = require("../tasks/others/copy");
 const svgBuild          = require("../tasks/images/svg");
-const minifyJs          = require("../tasks/js/minify");
+
+const customConfig = themeplify.customConfig;
+const minifyJs     = customConfig.minify ? require("../tasks/js/minify") : async () => {};
 const clearThemekitWorkingDirectory = require("../tasks/others/clearThemekitWorkingDirectory");
 
 const { gulp } = themeplify.packages;
