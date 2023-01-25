@@ -2,7 +2,6 @@ const { themeRoot }		= themeplify;
 const {
 	gulp,
 	rename,
-	fibers,
 	plumber,
 	sass,
 	sourcemaps,
@@ -33,7 +32,6 @@ module.exports = (scssFiles = files.scss, options = {}) => {
 			}))
 			.pipe(
 				sass({
-					fiber: fibers,
 					outputStyle: "expanded",
 					sourceComments: false,
 					indentType: "tab",
